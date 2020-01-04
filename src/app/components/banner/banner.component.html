@@ -1,0 +1,7 @@
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" *ngFor="let image of images; index let i">
+      <img [src]="image" [alt]="'Imagen ' + i + ' del banner'">
+    </div>
+  </div>
+</div>
