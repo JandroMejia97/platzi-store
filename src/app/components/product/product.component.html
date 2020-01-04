@@ -1,1 +1,6 @@
-<p>product works!</p>
+<h3>{{ product.title | uppercase }}</h3>
+<img [src]="product.image" alt="Imagen del producto">
+<strong>{{ product.price | currency }}</strong>
+<p>{{ product.description | slice:0:20 }}</p>
+<button (click)="addCart()">Agregar al carrito</button>
+<a [routerLink]="['/products', product.id]" routerLinkActive="active">Ver detalle</a>
