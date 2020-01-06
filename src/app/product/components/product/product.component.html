@@ -2,5 +2,5 @@
 <img [src]="product.image" alt="Imagen del producto">
 <strong>{{ product.price | currency }}</strong>
 <p>{{ product.description | slice:0:20 }}</p>
-<button (click)="addCart()">Agregar al carrito</button>
-<a [routerLink]="['/products', product.id]" routerLinkActive="active">Ver detalle</a>
+<button mat-raised-button color="primary" (click)="addCart()">Agregar al carrito</button>
+<a mat-raised-button [routerLink]="['/products', product.id]" routerLinkActive="active">Ver detalle</a>

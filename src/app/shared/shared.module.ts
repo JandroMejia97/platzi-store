@@ -22,6 +22,14 @@ import { LayoutComponent } from './components/layout/layout.component';
   imports: [
     RouterModule,
     CommonModule
+  ],
+  exports: [
+    ExponentialPipe,
+    HeaderComponent,
+    FooterComponent,
+    LayoutComponent,
+    HighlightDirective,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule { }
