@@ -1,13 +1,11 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
-  justify-items: center;
+  grid-gap: 50px 20px;
 }
 
 @media(min-width: 576px) {
   .product-grid {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 }

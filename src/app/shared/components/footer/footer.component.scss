@@ -2,11 +2,18 @@ footer {
   text-align: center;
   padding: 10px;
   background: #efefef;
-  position: absolute;
   bottom: 0;
-  height: 115px;
-  width: 100%;
+  border-top: 0.5px solid rgba(0,0,0,0.10);
 }
+
+img {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.corazon {
+  animation: latidos .5s infinite;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -19,4 +26,10 @@ ul li {
 
 li a {
   text-decoration: none;
+}
+
+@keyframes latidos {
+  from { transform: none; }
+  50% { transform: scale(1.5); }
+  to { transform: none; }
 }
