@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -21,7 +22,8 @@ import { LayoutComponent } from './components/layout/layout.component';
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     ExponentialPipe,
