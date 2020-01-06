@@ -5,6 +5,8 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
+import { LayoutComponent } from './components/layout/layout.component';
 
 
 
@@ -13,16 +15,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ExponentialPipe,
     HeaderComponent,
     FooterComponent,
+    LayoutComponent,
     HighlightDirective,
     PageNotFoundComponent
   ],
   imports: [
+    RouterModule,
     CommonModule
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent
   ]
 })
 export class SharedModule { }

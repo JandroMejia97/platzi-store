@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ContactComponent } from './contact/components/contact/contact.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 
 
 const routes: Routes = [
@@ -36,9 +35,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules
+    })],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
