@@ -1,34 +1,40 @@
-<form >
-
-  <p>Contact us</p>
+<form>
+  <h2>Contact Us</h2>
 
   <!-- Name -->
-  <input type="text" formControlName="name" id="name" placeholder="Name">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name" id="name">
+  </mat-form-field>
 
   <!-- Email -->
-  <input type="email" formControlName="email" id="email" placeholder="E-mail">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" id="email">
+  </mat-form-field>
 
   <!-- Subject -->
-  <label>Subject</label>
-  <select formControlName="subjects">
-    <option value="" disabled>Choose option</option>
-    <option value="1" selected>Feedback</option>
-    <option value="2">Report a bug</option>
-    <option value="3">Feature request</option>
-    <option value="4">Feature request</option>
-  </select>
+  <mat-form-field>
+    <mat-label>Subject</mat-label>
+    <mat-select formControlName="subjects">
+      <mat-option value="" disabled>Choose option</mat-option>
+      <mat-option value="1" selected>Feedback</mat-option>
+      <mat-option value="2">Report a bug</mat-option>
+      <mat-option value="3">Feature request</mat-option>
+      <mat-option value="4">Feature request</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <!-- Message -->
-  <div>
-    <textarea formControlName="message" id="message"
-      rows="3" placeholder="Message"></textarea>
-  </div>
-
-  <!-- Copy -->
-  <!-- <checkbox default="true" class="mb-4">Send me a copy of this message</checkbox> -->
+  <mat-form-field>
+    <mat-label>Leave a message</mat-label>
+    <textarea matInput formControlName="message" id="message"
+      rows="3"></textarea>
+  </mat-form-field>
 
   <!-- Send button -->
-  <button type="submit">Send</button>
+  <button mat-raised-button type="submit">Cancel</button>
+  <button mat-raised-button color="primary" type="submit">Send</button>
 
 </form>
 <!-- Default form contact -->
