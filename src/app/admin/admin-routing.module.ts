@@ -13,6 +13,11 @@ const routes: Routes = [
     component: NavComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'add',
+        pathMatch: 'full',
+      },
+      {
         path: 'add',
         component: ProductFormComponent
       },

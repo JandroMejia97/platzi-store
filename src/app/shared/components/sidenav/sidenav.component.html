@@ -5,11 +5,26 @@
     color="secondary">
     <mat-toolbar>Menú</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/home">Home</a>
-      <a mat-list-item routerLink="/products">Products</a>
-      <a mat-list-item routerLink="/contact">Contact</a>
-      <a mat-list-item routerLink="/about">About Us</a>
-      <a mat-list-item routerLink="/admin">Admin</a>
+      <a mat-list-item routerLink="/home" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-list-item routerLink="/products" routerLinkActive="active">
+        <mat-icon>store</mat-icon>
+        Products
+      </a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="active">
+        <mat-icon>chat</mat-icon>
+        Contact
+      </a>
+      <a mat-list-item routerLink="/about" routerLinkActive="active">
+        <mat-icon>info</mat-icon>
+        About Us
+      </a>
+      <a mat-list-item routerLink="/admin" routerLinkActive="active">
+        <mat-icon>verified_user</mat-icon>
+        Admin
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

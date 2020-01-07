@@ -2,6 +2,14 @@
 html, body { height: 100%; }
 body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
+mat-sidenav {
+  min-width: 200px;
+
+  mat-icon {
+    margin-right: 20px;
+  }
+}
+
 .container {
   padding: 0;
   margin-right: auto;
