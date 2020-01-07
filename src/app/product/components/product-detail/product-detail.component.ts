@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product;
+  public product: Product;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService
@@ -17,12 +17,12 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
-    console.log(this.product);
   }
 
   getProduct() {
     this.route.params.subscribe((params: Params) => {
-      this.productService.getProduct(params.id).subscribe((resp: any) => {
+      const id = Number(params.id);
+      this.productService.getProduct(id).subscribe((resp: any) => {
         this.product = resp;
       });
     });
