@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { MaterialModule } from '../material/material.module';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 
 
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material/material.module';
     FooterComponent,
     LayoutComponent,
     HighlightDirective,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SidenavComponent
   ],
   imports: [
     RouterModule,

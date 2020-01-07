@@ -1,14 +1,26 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayoutAlign="space-between center">
-      <nav>
+    <nav fxLayout="row">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="toggle.emit(!openedSideNav)">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        Platzi Store
+      </span>
+      <div fxHide.lt-sm="true">
         <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
         <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
         <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
         <a mat-button routerLink="/about" routerLinkActive="active">About</a>
-      </nav>
-      <a mat-raised-button matBadge="4" matBadgeColor="warn">
-        Carrito
-        <mat-icon>shopping_cart</mat-icon>
-      </a>
+      </div>
+    </nav>
+    <a mat-raised-button matBadge="4" matBadgeColor="warn">
+      Carrito
+      <mat-icon>shopping_cart</mat-icon>
+    </a>
   </mat-toolbar-row>
 </mat-toolbar>

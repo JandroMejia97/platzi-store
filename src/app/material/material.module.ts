@@ -11,6 +11,7 @@ import {
   MatButtonModule,
   MatSelectModule,
   MatToolbarModule,
+  MatSidenavModule,
   MatFormFieldModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,6 +30,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSelectModule,
     MatToolbarModule,
     FlexLayoutModule,
+    MatSidenavModule,
     MatFormFieldModule
   ],
   exports: [
@@ -42,6 +44,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSelectModule,
     MatToolbarModule,
     FlexLayoutModule,
+    MatSidenavModule,
     MatFormFieldModule
   ]
 })
