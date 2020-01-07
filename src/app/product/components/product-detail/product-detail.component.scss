@@ -1,0 +1,15 @@
+:host {
+  padding: 20px;
+}
+.crop-image {
+  text-align: center;
+}
+img {
+  max-width: 100%;
+}
+
+@media(min-width: 576px) {
+  img {
+    max-width: 75%;
+  }
+}

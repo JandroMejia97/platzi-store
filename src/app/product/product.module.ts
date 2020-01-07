@@ -6,6 +6,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductComponent } from './components/product/product.component';
 import { MaterialModule } from '../material/material.module';
+import { CoreModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MaterialModule } from '../material/material.module';
     ProductDetailComponent
   ],
   imports: [
+    CoreModule,
     CommonModule,
     MaterialModule,
     ProductRoutingModule

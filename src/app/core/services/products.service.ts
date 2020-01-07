@@ -1,63 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  products: Product[] = [
-    {
-      id: 1,
-      image: 'assets/images/camiseta.png',
-      title: 'Camiseta',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: 2,
-      image: 'assets/images/hoodie.png',
-      title: 'Hoodie',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: 3,
-      image: 'assets/images/mug.png',
-      title: 'Mug',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: 4,
-      image: 'assets/images/pin.png',
-      title: 'Pin',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: 5,
-      image: 'assets/images/stickers1.png',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: 6,
-      image: 'assets/images/stickers2.png',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-  ];
+  url = environment.apiUrl + '/products/';
+  products: Product[] = [];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  getProducts() {
-    return this.products;
+  getProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.url)
+    .pipe(
+      tap(_ => console.log('Data obtained successfully.'))
+    );
   }
 
-  getProduct(id: number) {
-    console.log(id);
-    return this.products.find(item => Number(id) === item.id);
+  getProduct(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.url}${id}`)
+    .pipe(
+      tap(_ => console.log('Data obtained successfully.'))
+    );
   }
 }

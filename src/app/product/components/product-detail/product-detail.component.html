@@ -1,11 +1,18 @@
-<div>
-  <img [src]="product.image">
-</div>
-<div>
-  <ul>
-    <li>Nombre: {{ product.title }}</li>
-    <li>Precio: {{ product.price | currency }}</li>
-    <li>Description: {{ product.description }}</li>
-  </ul>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{ product ? product.title : '' | uppercase }}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h3>{{ product ? product.price : 0.00 | currency }}</h3>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="crop-image">
+    <img [src]="product ? product.image: ''" [alt]="'Imagen del producto ' + (product ? product.title : '')">
+  </div>
+  <mat-card-content>
+    <p>{{ product ? product.description : '' }}</p>
+  </mat-card-content>
+</mat-card>
+
 
