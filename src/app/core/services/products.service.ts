@@ -21,7 +21,8 @@ export class ProductsService {
     );
   }
 
-  getProduct(id: number): Observable<Product> {
+  getProduct(product: number | Product): Observable<Product> {
+    const id = typeof product === 'number' ? product : product.id;
     return this.httpClient.get<Product>(`${this.url}${id}`)
     .pipe(
       tap(_ => console.log('Data obtained successfully.'))
