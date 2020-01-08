@@ -5,14 +5,20 @@ import {
   MatIconModule,
   MatListModule,
   MatCardModule,
+  MatSortModule,
+  MatMenuModule,
+  MatTreeModule,
   MatBadgeModule,
   MatInputModule,
   MatRadioModule,
+  MatTableModule,
   MatButtonModule,
   MatSelectModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatGridListModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -23,29 +29,42 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatSortModule,
+    MatMenuModule,
+    MatTreeModule,
     MatBadgeModule,
     MatInputModule,
     MatRadioModule,
+    MatTableModule,
     MatButtonModule,
     MatSelectModule,
     MatToolbarModule,
     FlexLayoutModule,
     MatSidenavModule,
-    MatFormFieldModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatPaginatorModule
   ],
   exports: [
+    CommonModule,
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatSortModule,
+    MatMenuModule,
+    MatTreeModule,
     MatBadgeModule,
     MatInputModule,
     MatRadioModule,
+    MatTableModule,
     MatButtonModule,
     MatSelectModule,
     MatToolbarModule,
     FlexLayoutModule,
     MatSidenavModule,
-    MatFormFieldModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

@@ -28,4 +28,26 @@ export class ProductsService {
       tap(_ => console.log('Data obtained successfully.'))
     );
   }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(`${this.url}`, product)
+    .pipe(
+      tap(_ => console.log('Data saved successfully.'))
+    );
+  }
+
+  updateProduct(product: Partial<Product>): Observable<Product> {
+    return this.httpClient.put<Product>(`${this.url}${product.id}`, product)
+    .pipe(
+      tap(_ => console.log('Data updated successfully.'))
+    );
+  }
+
+  deleteProduct(product: number | Product): Observable<any> {
+    const id = typeof product === 'number' ? product : product.id;
+    return this.httpClient.delete<any>(`${this.url}${id}`)
+    .pipe(
+      tap(_ => console.log('Data deleted successfully.'))
+    );
+  }
 }
