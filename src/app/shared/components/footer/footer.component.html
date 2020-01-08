@@ -38,4 +38,24 @@
       </a>
     </li>
   </ul>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="email-input">
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" type="email" [formControl]="emailField">
+      </mat-form-field>
+      <mat-error *ngIf="emailField.hasError('email') && !emailField.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailField.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="emailField.invalid"
+      (click)="sendEmail()">
+      Send
+    </button>
+  </div>
 </footer >

@@ -24,10 +24,10 @@ import { OrdersListComponent } from './components/orders-list/orders-list.compon
   ],
   imports: [
     CommonModule,
+    LayoutModule,
     MaterialModule,
     AdminRoutingModule,
-    ReactiveFormsModule,
-    LayoutModule
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

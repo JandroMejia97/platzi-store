@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { MaterialModule } from '../material/material.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,14 +18,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
+    SidenavComponent,
     HighlightDirective,
-    PageNotFoundComponent,
-    SidenavComponent
+    PageNotFoundComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ExponentialPipe,
