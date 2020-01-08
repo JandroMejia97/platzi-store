@@ -11,6 +11,7 @@ import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { OrdersListComponent } from './components/orders-list/orders-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductsListComponent } from './components/products-list/products-list.
     TreeComponent,
     DashboardComponent,
     ProductFormComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    OrdersListComponent
   ],
   imports: [
     CommonModule,
