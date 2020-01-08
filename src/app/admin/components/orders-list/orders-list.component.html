@@ -44,7 +44,7 @@
           mat-mini-fab
           color="warn"
           aria-label="'Delete product' + row.title"
-          (click)="deleteProduct(row)">
+          (click)="deleteOrder(row)">
           <mat-icon>delete_forever</mat-icon>
         </button>
       </td>
@@ -55,7 +55,7 @@
   </table>
 
   <mat-paginator #paginator
-      [length]="products?.length"
+      [length]="orders?.length"
       [pageIndex]="0"
       [pageSize]="50"
       [pageSizeOptions]="[25, 50, 100, 250]">
