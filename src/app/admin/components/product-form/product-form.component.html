@@ -1,100 +1,76 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
-    <mat-card-header>
-      <mat-card-title>Shipping Information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Company" formControlName="company">
-          </mat-form-field>
-        </div>
+<mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <h2>{{ product ? ('Edit Product: ' + product.title | uppercase) : 'Add Product' | uppercase }}</h2>
+    <div *ngIf="idField.errors && idField.dirty">
+      <mat-error *ngIf="idField.hasError('required')">
+        Identificator is <strong>required.</strong>
+      </mat-error>
+    </div>
+    <div *ngIf="titleField?.errors && titleField.dirty">
+      <mat-error *ngIf="titleField.hasError('required')">
+        Title is <strong>required.</strong>
+      </mat-error>
+    </div>
+    <div *ngIf="priceField?.errors && priceField.dirty">
+      <mat-error *ngIf="priceField.hasError('required')">
+        Price is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="priceField.hasError('min')">
+        Price should be <strong>greater than zero.</strong>
+      </mat-error>
+    </div>
+    <div *ngIf="descriptionField?.errors && descriptionField.dirty">
+      <mat-error *ngIf="descriptionField.hasError('required')">
+        Description is <strong>required.</strong>
+      </mat-error>
+    </div>
+    <div *ngIf="imageField?.errors && imageField.dirty">
+      <mat-error *ngIf="imageField.hasError('required')">
+        Image is <strong>required.</strong>
+      </mat-error>
+    </div>
+    <mat-form-field *ngIf="!product">
+      <input matInput type="number" placeholder="Enter an identificator for this product." formControlName="id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Enter a title for this product." formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Enter a price for this product." formControlName="price">
+    </mat-form-field>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <button mat-button color="primary">
+        <mat-icon>file_upload</mat-icon>
+        Upload Image
+      </button>
+      <!--
+      <div [@fadeInOut]="image.state">
+        <mat-progress-bar [value]="image.progress"></mat-progress-bar>
+        <span id="file-label">
+          {{file.data.name}}
+          <a title="Retry" (click)="retryFile(file)" *ngIf="file.canRetry">
+            <mat-icon>refresh</mat-icon>
+          </a>
+          <a title="Cancel" (click)="cancelFile(file)" *ngIf="file.canCancel">
+            <mat-icon>cancel</mat-icon>
+          </a>
+        </span>
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="First name" formControlName="firstName">
-            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
-              First name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" formControlName="lastName">
-            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
-              Last name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address" formControlName="address"></textarea>
-            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
-              Address is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row" *ngIf="!hasUnitNumber">
-        <div class="col">
-          <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
-            + Add C/O, Apt, Suite, Unit
-          </button>
-        </div>
-      </div>
-      <div class="row" *ngIf="hasUnitNumber">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="City" formControlName="city">
-            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
-              City is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="State" formControlName="state">
-              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
-                {{ state.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
-              State is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-radio-group formControlName="shipping">
-            <mat-radio-button value="free">Free Shipping</mat-radio-button>
-            <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
-            <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+      -->
+      <img *ngIf="product" [src]="product.image">
+      <input hidden #image type="file" placeholder="Upload a image for this product." formControlName="image"
+        (change)="onFileSelected($event)">
+    </div>
+    <mat-form-field>
+      <textarea matInput placeholder="Enter a description for this product." formControlName="description" rows="3">
+      </textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="save()">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</mat-dialog-actions>

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductFormGeneratedComponent } from './components/product-form-generated/product-form-generated.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 
 const routes: Routes = [
@@ -15,12 +16,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'add',
+        redirectTo: 'products',
         pathMatch: 'full',
-      },
-      {
-        path: 'add',
-        component: ProductFormComponent
       },
       {
         path: 'products',
@@ -37,6 +34,10 @@ const routes: Routes = [
       {
         path: 'tree',
         component: TreeComponent
+      },
+      {
+        path: 'generic-form',
+        component: ProductFormGeneratedComponent
       }
     ]
   },

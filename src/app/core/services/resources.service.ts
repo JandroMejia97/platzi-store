@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Resource } from '../models/resource.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
+import { Resource } from '../models/resource.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export abstract class ResourcesService<T extends Resource> {
   };
 
   constructor(protected http: HttpClient, endPoint: string) {
-    this.url = `${environment.apiUrl}/${endPoint}/`;
+    this.url = `${environment.apiUrl}/${endPoint}`;
   }
 
   getList(): Observable<T[]> {

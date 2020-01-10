@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from 'src/app/core/models/product.model';
+import { MatDialog } from '@angular/material';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'app-products-list',
@@ -14,7 +16,7 @@ export class ProductsListComponent implements OnInit {
 
   displayedColumns = ['id', 'title', 'price', 'actions'];
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private matDialog: MatDialog) { }
 
   ngOnInit() {
     this.getProducts();
@@ -32,6 +34,42 @@ export class ProductsListComponent implements OnInit {
       this.products = this.products.filter((product: Product) => Number(product.id) !== Number(deletedProduct.id));
       this.table.dataSource = this.products;
       this.table.renderRows();
+    });
+  }
+
+  addedProduct(addedProduct: Product) {
+    this.products.push(addedProduct);
+    this.table.dataSource = this.products;
+    this.table.renderRows();
+  }
+
+  updatedProduct(updatedProduct: Product) {
+    const id = this.products.findIndex((product: Product) => Number(product.id) === Number(updatedProduct.id));
+    this.products[id] = updatedProduct;
+    this.table.dataSource = this.products;
+    this.table.renderRows();
+  }
+
+  addDialog() {
+    const dialogRef = this.matDialog.open(ProductFormComponent);
+    dialogRef.afterClosed().subscribe((result: Product) => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.addedProduct(result);
+      }
+    });
+  }
+
+  editDialog(product: Product) {
+    const dialogRef = this.matDialog.open(ProductFormComponent, {
+      data: product
+    });
+
+    dialogRef.afterClosed().subscribe((result: Product) => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.updatedProduct(result);
+      }
     });
   }
 
