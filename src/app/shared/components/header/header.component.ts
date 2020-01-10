@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,12 @@ export class HeaderComponent {
   @Input() public openedSideNav: boolean;
   @Output() toggle = new EventEmitter<boolean>();
 
-  constructor() { }
+  total = 0;
+
+  constructor(private cartService: CartService) {
+    this.cartService.cart$.subscribe((products) => {
+      this.total = products.length;
+    })
+  }
 
 }
