@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-export class Validators {
+export class CustomValidators {
 
   static isPriceValid(control: AbstractControl): any {
     const value = control.value;

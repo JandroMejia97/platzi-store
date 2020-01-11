@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,13 @@ export class HeaderComponent {
   @Input() public openedSideNav: boolean;
   @Output() toggle = new EventEmitter<boolean>();
 
-  total = 0;
+  total$: Observable<number>;
 
   constructor(private cartService: CartService) {
-    this.cartService.cart$.subscribe((products) => {
-      this.total = products.length;
-    })
+    this.total$ = this.cartService.cart$
+    .pipe(
+      map((products) => products.length)
+    );
   }
 
 }

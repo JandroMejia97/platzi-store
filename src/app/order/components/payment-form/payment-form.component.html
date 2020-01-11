@@ -1,0 +1,22 @@
+<form [formGroup]="paymentForm">
+  <h2>Payment</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="full-width">
+        <input type="tel" autocomplete="cc-number" formControlName="ccNumber" id="ccNumber" ccNum>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="full-width">
+        <input type="tel" type="tel" autocomplete="cc-exp" formControlName="ccExp" id="ccExp" ccExp>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="full-width">
+        <input type="tel" type="tel" autocomplete="cc-cvc" formControlName="ccCvc" id="ccCvc" ccCvc>
+      </div>
+    </div>
+  </div>
+</form>

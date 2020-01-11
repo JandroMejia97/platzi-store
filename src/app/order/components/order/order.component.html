@@ -1,0 +1,39 @@
+<mat-horizontal-stepper linear>
+  <ng-template matStepperIcon="edit">
+    <mat-icon>check</mat-icon>
+  </ng-template>
+  <mat-step *ngIf="(products$ | async) as products" [stepControl]="products.length !== 0">
+    <ng-template matStepLabel>
+      Your Products
+    </ng-template>
+    <h2>Shopping Cart</h2>
+    <mat-list>
+      <mat-list-item *ngIf="products.length === 0">
+        <h3 matLine><strong>Opps!</strong> There are no products in the cart.</h3>
+      </mat-list-item>
+      <mat-list-item *ngFor="let product of products">
+        <h3 matLine> {{ product.title }} </h3>
+        <p matLine>
+          <span> {{ product.price }} </span>
+          <span class="demo-2"> -- {{ product.description }} </span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+    <button mat-raised-button color="primary" matStepperNext>Next</button>
+  </mat-step>
+  <mat-step >
+    <ng-template matStepLabel>
+      Personal Data
+    </ng-template>
+    <app-personal-data-form [dataForm]="dataForm"></app-personal-data-form>
+    <button mat-raised-button color="secondary" matStepperPrevious>Previous</button>
+    <button mat-raised-button color="primary" matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      Payment
+    </ng-template>
+    <app-payment-form [paymentForm]="paymentForm"></app-payment-form>
+    <button mat-raised-button color="primary" matStepperNext>Next</button>
+  </mat-step>
+</mat-horizontal-stepper>

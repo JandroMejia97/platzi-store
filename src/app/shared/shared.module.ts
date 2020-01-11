@@ -10,6 +10,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MaterialModule } from '../material/material.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CountProductsPipe } from './pipes/count-products/count-products.pipe';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     LayoutComponent,
     SidenavComponent,
+    CountProductsPipe,
     HighlightDirective,
     PageNotFoundComponent
   ],
@@ -33,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
+    CountProductsPipe,
     HighlightDirective,
     PageNotFoundComponent
   ]

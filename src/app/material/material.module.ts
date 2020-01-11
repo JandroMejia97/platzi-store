@@ -17,9 +17,10 @@ import {
   MatDialogModule,
   MatToolbarModule,
   MatSidenavModule,
+  MatStepperModule,
+  MatGridListModule,
   MatFormFieldModule,
-  MatPaginatorModule,
-  MatGridListModule
+  MatPaginatorModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -43,6 +44,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     FlexLayoutModule,
     MatSidenavModule,
+    MatStepperModule,
     MatGridListModule,
     MatFormFieldModule,
     MatPaginatorModule
@@ -65,6 +67,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     FlexLayoutModule,
     MatSidenavModule,
+    MatStepperModule,
     MatGridListModule,
     MatFormFieldModule,
     MatPaginatorModule

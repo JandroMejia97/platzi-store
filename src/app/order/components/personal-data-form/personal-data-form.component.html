@@ -1,0 +1,75 @@
+<form [formGroup]="dataForm">
+  <h2>Personal Data</h2>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="First name" formControlName="firstName" required>
+        <mat-error *ngIf="dataForm.controls['firstName'].hasError('required')">
+          First name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Last name" formControlName="lastName" required>
+        <mat-error *ngIf="dataForm.controls['lastName'].hasError('required')">
+          Last name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Address" formControlName="address" required></textarea>
+        <mat-error *ngIf="dataForm.controls['address'].hasError('required')">
+          Address is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Floor, apartment" formControlName="address2"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="City" formControlName="city" required>
+        <mat-error *ngIf="dataForm.controls['city'].hasError('required')">
+          City is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode" required>
+        <mat-hint align="end">{{postalCode.value.length}} / [4-5]</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Province" formControlName="province" required>
+          <mat-option *ngFor="let province of provinces" [value]="province.isoId">
+            {{ province.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="dataForm.controls['province'].hasError('required')">
+          Province is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-radio-group formControlName="shipping">
+        <mat-radio-button value="free">Free Shipping</mat-radio-button>
+        <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+        <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</form>
