@@ -9,10 +9,10 @@ import { MaterialModule } from '../material/material.module';
 import { NavComponent } from './components/nav/nav.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProductFormGeneratedComponent } from './components//product-form-generated/product-form-generated.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductFormGeneratedComponent } from './components//product-form-generated/product-form-generated.component';
 
 @NgModule({
   declarations: [

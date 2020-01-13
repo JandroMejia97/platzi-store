@@ -7,6 +7,11 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]

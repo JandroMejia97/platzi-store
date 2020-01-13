@@ -21,12 +21,10 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        canActivate: [AdminGuard],
         loadChildren: () => import('./contact/contact.module').then(c => c.ContactModule)
       },
       {
         path: 'about',
-        canActivate: [AdminGuard],
         loadChildren: () => import('./about/about.module').then(c => c.AboutModule)
       },
       {
@@ -36,11 +34,16 @@ const routes: Routes = [
       {
         path: 'orders',
         loadChildren: () => import('./order/order.module').then(o => o.OrderModule)
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(a => a.AuthModule)
       }
     ]
   },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule)
   },
   {

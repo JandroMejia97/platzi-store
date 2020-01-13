@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './services/products.service';
+import { MatSnackBarModule } from '@angular/material';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
   ],
   providers: [
     ProductsService
