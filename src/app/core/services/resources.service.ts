@@ -17,7 +17,7 @@ export abstract class ResourcesService<T extends Resource> {
   constructor(
     endPoint: string,
     protected http: HttpClient,
-    private messageService: MessageService
+    protected messageService: MessageService
   ) {
     this.url = `${environment.apiUrl}/${endPoint}`;
   }
