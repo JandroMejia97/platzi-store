@@ -21,7 +21,9 @@ import {
   MatStepperModule,
   MatGridListModule,
   MatFormFieldModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -49,7 +51,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatStepperModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -73,7 +77,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatStepperModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }

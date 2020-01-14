@@ -39,27 +39,15 @@
       <input matInput type="number" placeholder="Enter a price for this product." formControlName="price">
     </mat-form-field>
     <div fxLayout="column" fxLayoutAlign="center center">
-      <button mat-button color="primary">
+      <input hidden #image type="file" placeholder="Upload a image for this product."
+        (change)="uploadFile($event)">
+      <button mat-button color="primary" (click)="image.click()">
         <mat-icon>file_upload</mat-icon>
         Upload Image
       </button>
-      <!--
-      <div [@fadeInOut]="image.state">
-        <mat-progress-bar [value]="image.progress"></mat-progress-bar>
-        <span id="file-label">
-          {{file.data.name}}
-          <a title="Retry" (click)="retryFile(file)" *ngIf="file.canRetry">
-            <mat-icon>refresh</mat-icon>
-          </a>
-          <a title="Cancel" (click)="cancelFile(file)" *ngIf="file.canCancel">
-            <mat-icon>cancel</mat-icon>
-          </a>
-        </span>
-      </div>
-      -->
-      <img *ngIf="product" [src]="product.image">
-      <input hidden #image type="file" placeholder="Upload a image for this product." formControlName="image"
-        (change)="onFileSelected($event)">
+      <mat-progress-bar *ngIf="(uploadPercent$ | async) as uploadPercent" [value]="uploadPercent"></mat-progress-bar>
+      <img *ngIf="(image$ | async) as imageUrl" [src]="imageUrl">
+      <img *ngIf="!(image$ | async) && product" [src]="product.image">
     </div>
     <mat-form-field>
       <textarea matInput placeholder="Enter a description for this product." formControlName="description" rows="3">

@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Product } from 'src/app/core/models/product.model';
 import { ProductsService } from 'src/app/core/services/products.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
@@ -11,10 +14,13 @@ import { ProductsService } from 'src/app/core/services/products.service';
 })
 export class ProductFormComponent implements OnInit {
   formGroup: FormGroup;
+  image$: Observable<string>;
+  uploadPercent$: Observable<number>;
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductsService,
+    private angularStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public product: Product,
     public dialogRef: MatDialogRef<ProductFormComponent>
   ) {
@@ -24,6 +30,7 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
     if (this.product) {
       this.formGroup.patchValue(this.product);
+      this.formGroup.get('image').setValue(this.product.image);
     }
   }
 
@@ -63,15 +70,27 @@ export class ProductFormComponent implements OnInit {
   }
 
   updateProduct(updateProduct: Product): void {
-    this.product = this.formGroup.value as Product;
     this.productService.putObject(updateProduct).subscribe((product: Product) => {
       this.product = product;
       this.close();
     });
   }
 
-  onFileSelected(event: Event) {
+  uploadFile(event: any) {
+    const file = event.target.files[0];
+    const path = `images/products/${file.name}`;
+    const fileRef = this.angularStorage.ref(path);
+    const task = this.angularStorage.upload(path, file);
+    this.uploadPercent$ = task.percentageChanges();
 
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.image$ = fileRef.getDownloadURL();
+        this.image$.subscribe(url => {
+          this.formGroup.get('image').setValue(url);
+        });
+      })
+    ).subscribe();
   }
 
 
