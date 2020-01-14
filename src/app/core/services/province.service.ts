@@ -188,5 +188,5 @@ const PROVINCES: Province[] = [
     id: 94,
     isoName: 'Tierra del Fuego'
   }
-]
+];
 

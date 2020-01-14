@@ -39,8 +39,7 @@
       <input matInput type="number" placeholder="Enter a price for this product." formControlName="price">
     </mat-form-field>
     <div fxLayout="column" fxLayoutAlign="center center">
-      <input hidden #image type="file" placeholder="Upload a image for this product."
-        (change)="uploadFile($event)">
+      <input hidden #image type="file" placeholder="Upload a image for this product." (change)="uploadFile($event)">
       <button mat-button color="primary" (click)="image.click()">
         <mat-icon>file_upload</mat-icon>
         Upload Image

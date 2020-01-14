@@ -10,7 +10,7 @@ import { OrdersService } from 'src/app/core/services/orders.service';
   styleUrls: ['./orders-list.component.scss']
 })
 export class OrdersListComponent implements OnInit {
-  @ViewChild('orderTable', {static: false}) table: MatTable<Order>;
+  @ViewChild('orderTable', { static: false }) table: MatTable<Order>;
   orders: Order[] = [];
 
   displayedColumns = ['number', 'title', 'price', 'actions'];
@@ -18,7 +18,7 @@ export class OrdersListComponent implements OnInit {
   constructor(private orderService: OrdersService) { }
 
   ngOnInit() {
-    //this.getOrders();
+    // this.getOrders();
   }
 
   getOrders() {

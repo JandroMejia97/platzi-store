@@ -1,0 +1,8 @@
++ @angular-devkit/build-angular@0.803.22
+updated 1 package and audited 19237 packages in 42.388s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+found 2 high severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
