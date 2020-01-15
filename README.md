@@ -99,7 +99,7 @@ Before continuing, make sure you do the following:
         /* Add a slash symbol (/) before/behind each list item */
         ul.breadcrumb li+li:before {
           padding: 8px;
-          content: ">";
+          content: "/\00a0";;
         }
       </style>
       <ul class="breadcrumb">
