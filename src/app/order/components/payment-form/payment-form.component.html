@@ -2,21 +2,71 @@
   <h2>Payment</h2>
   <div class="row">
     <div class="col-12">
-      <div class="full-width">
-        <input type="tel" autocomplete="cc-number" formControlName="ccNumber" id="ccNumber" ccNum>
-      </div>
+      <mat-form-field class="full-width">
+        <!-- <credit-card-number-input placeholder="Enter your personal account number." required></credit-card-number-input> -->
+        <input matInput cardNumber (cardType)="onToggle($event)" placeholder="Enter your personal account number."
+          formControlName="cardNumber" required>
+        <mat-hint *ngIf="cardType">This card is <strong>{{ cardType | uppercase }}</strong></mat-hint>
+        <mat-error *ngIf="paymentForm.controls['cardNumber'].hasError('card_number_invalid')">
+          This card number is <strong>invalid</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Enter owner name." formControlName="cardOwnerName" required>
+        <mat-error *ngIf="paymentForm.controls['cardOwnerName'].hasError('required')">
+          Owner name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
-      <div class="full-width">
-        <input type="tel" type="tel" autocomplete="cc-exp" formControlName="ccExp" id="ccExp" ccExp>
-      </div>
+      <mat-form-field class="full-width">
+        <input matInput cardExpirationDate placeholder="Enter the expiration date of the card." type="text"
+          formControlName="cardExpirationDate" required>
+        <mat-error *ngIf="paymentForm.controls['cardExpirationDate'].hasError('card_expiration_date_invalid')">
+          This expiration date is <strong>invalid</strong>
+        </mat-error>
+      </mat-form-field>
     </div>
     <div class="col-6">
-      <div class="full-width">
-        <input type="tel" type="tel" autocomplete="cc-cvc" formControlName="ccCvc" id="ccCvc" ccCvc>
-      </div>
+      <mat-form-field class="full-width">
+        <input matInput cardSecurityCode placeholder="Enter the security code of the card." type="number"
+          formControlName="cardSecurityCode" required>
+        <mat-error *ngIf="paymentForm.controls['cardSecurityCode'].hasError('card_security_code_invalid')">
+          This expiration date is <strong>invalid</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Document type." formControlName="cardDocumentType" required>
+          <mat-option value="dni">
+            DNI
+          </mat-option>
+          <mat-option value="cuil">
+            CUIL
+          </mat-option>
+          <mat-option value="pas">
+            PASSPORT
+          </mat-option>
+          <mat-option value="other">
+            OTHER
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Owner Document Number." type="number" formControlName="cardDocumentNumber"
+          required>
+      </mat-form-field>
     </div>
   </div>
 </form>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,6 +14,7 @@ import { PaymentFormComponent } from './components/payment-form/payment-form.com
   declarations: [OrderComponent, PersonalDataFormComponent, PaymentFormComponent],
   imports: [
     CommonModule,
+    SharedModule,
     MaterialModule,
     OrderRoutingModule,
     ReactiveFormsModule

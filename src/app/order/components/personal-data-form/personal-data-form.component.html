@@ -44,7 +44,8 @@
     </div>
     <div class="col-6">
       <mat-form-field class="full-width">
-        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode" required>
+        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode"
+          required>
         <mat-hint align="end">{{postalCode.value.length}} / [4-5]</mat-hint>
       </mat-form-field>
     </div>
@@ -65,10 +66,10 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <mat-radio-group formControlName="shipping">
-        <mat-radio-button value="free">Free Shipping</mat-radio-button>
-        <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
-        <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+      <mat-radio-group class="row" formControlName="shipping">
+        <mat-radio-button class="col-4" value="free">Free Shipping</mat-radio-button>
+        <mat-radio-button class="col-4" value="priority">Priority Shipping</mat-radio-button>
+        <mat-radio-button class="col-4" value="nextday">Next Day Shipping</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>

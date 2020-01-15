@@ -11,6 +11,11 @@ import { MaterialModule } from '../material/material.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CountProductsPipe } from './pipes/count-products/count-products.pipe';
+import { CreditCardNumberInput } from './inputs/credit-card-number/credit-card-number-input.component';
+import { CreditCardExpirationDateInput } from './inputs/credit-card-expiration-date/credit-card-expiration-date-input.component';
+import { CardNumberDirective } from './directives/card-number/card-number.directive';
+import { CardExpirationDateDirective } from './directives/card-expiration-date/card-expiration-date.directive';
+import { CardSecurityCodeDirective } from './directives/card-security-code/card-security-code.directive';
 
 
 @NgModule({
@@ -22,7 +27,12 @@ import { CountProductsPipe } from './pipes/count-products/count-products.pipe';
     SidenavComponent,
     CountProductsPipe,
     HighlightDirective,
-    PageNotFoundComponent
+    CardNumberDirective,
+    CreditCardNumberInput,
+    PageNotFoundComponent,
+    CardSecurityCodeDirective,
+    CardExpirationDateDirective,
+    CreditCardExpirationDateInput,
   ],
   imports: [
     RouterModule,
@@ -37,7 +47,12 @@ import { CountProductsPipe } from './pipes/count-products/count-products.pipe';
     LayoutComponent,
     CountProductsPipe,
     HighlightDirective,
-    PageNotFoundComponent
+    CardNumberDirective,
+    CreditCardNumberInput,
+    PageNotFoundComponent,
+    CardSecurityCodeDirective,
+    CardExpirationDateDirective,
+    CreditCardExpirationDateInput
   ]
 })
 export class SharedModule { }

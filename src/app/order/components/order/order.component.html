@@ -9,31 +9,31 @@
     <h2>Shopping Cart</h2>
     <mat-list>
       <mat-list-item *ngIf="products.length === 0">
-        <h3 matLine><strong>Opps!</strong> There are no products in the cart.</h3>
+        <h2 matLine><strong>Opps!</strong> There are no products in the cart.</h2>
       </mat-list-item>
       <mat-list-item *ngFor="let product of products">
         <h3 matLine> {{ product.title }} </h3>
+        <img class="order-image" [src]="product.image">
         <p matLine>
-          <span> {{ product.price }} </span>
-          <span class="demo-2"> -- {{ product.description }} </span>
+          <span> {{ product.price }} </span><span> -- {{ product.description }} </span>
         </p>
       </mat-list-item>
     </mat-list>
     <button mat-raised-button color="primary" matStepperNext>Next</button>
   </mat-step>
-  <mat-step >
+  <mat-step [stepControl]="dataForm.dataForm" editable>
     <ng-template matStepLabel>
       Personal Data
     </ng-template>
-    <app-personal-data-form [dataForm]="dataForm"></app-personal-data-form>
+    <app-personal-data-form #dataForm></app-personal-data-form>
     <button mat-raised-button color="secondary" matStepperPrevious>Previous</button>
     <button mat-raised-button color="primary" matStepperNext>Next</button>
   </mat-step>
-  <mat-step>
+  <mat-step [stepControl]="paymentForm.paymentForm" editable>
     <ng-template matStepLabel>
       Payment
     </ng-template>
-    <app-payment-form [paymentForm]="paymentForm"></app-payment-form>
+    <app-payment-form #paymentForm></app-payment-form>
     <button mat-raised-button color="primary" matStepperNext>Next</button>
   </mat-step>
 </mat-horizontal-stepper>
