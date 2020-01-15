@@ -11,7 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environments';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environments';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
