@@ -5,7 +5,7 @@ environments/
 .env
 
 # Firebase
-*.gfirebase/*
+.firebase/
 
 # compiled output
 /dist
