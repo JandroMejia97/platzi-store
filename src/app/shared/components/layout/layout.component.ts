@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { shareReplay, map } from 'rxjs/operators';
+import { MatDrawer } from '@angular/material';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-layout',
@@ -6,12 +12,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  public openedSideNav = false;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+  @ViewChild(SidenavComponent, {static: true}) sidenavComponent: SidenavComponent;
 
-  constructor() {}
-
-  onToggle(shouldOpen: boolean) {
-    this.openedSideNav = shouldOpen;
+  get drawer() {
+    console.log(this.sidenavComponent);
+    return this.sidenavComponent ? this.sidenavComponent.drawer : null;
   }
 
+  constructor(
+    private breakpointObserver: BreakpointObserver
+  ) {}
+  
 }

@@ -1,5 +1,9 @@
 <mat-sidenav-container fxFlexFill color="secondary">
-  <mat-sidenav #drawer mode="over" [(opened)]="openedSideNav" color="secondary">
+  <mat-sidenav #drawer fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [opened]="(isHandset$ | async) === false"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    color="secondary">
     <mat-toolbar>Menú</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active">

@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,19 +11,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  @Input() openedSideNav: boolean;
-  @Output() toggle = new EventEmitter<boolean>();
-  @ViewChild('drawer', { static: true }) drawer: MatDrawer;
+  @ViewChild('drawer', { static: true }) @Output() drawer: MatDrawer;
+  @Input() isHandset$: Observable<boolean>;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.drawer.openedChange.subscribe((o: boolean) => {
-      this.toggle.emit(o);
-    });
-  }
+  ngOnInit() { }
 
 }
