@@ -4,7 +4,13 @@
   grid-gap: 50px 20px;
 }
 
-@media(min-width: 576px) {
+@media(min-width: 500px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 800px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }

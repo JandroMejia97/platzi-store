@@ -1,8 +1,7 @@
 <app-header
-  [openedSideNav]="openedSideNav"
-  (toggle)="onToggle($event)">
+  [isHandset$]="isHandset$"
+  [(drawer)]="sidenavComponent.drawer">
 </app-header>
 <app-sidenav
-  [(openedSideNav)]="openedSideNav"
-  (toggle)="onToggle($event)">
+  [isHandset$]="isHandset$">
 </app-sidenav>

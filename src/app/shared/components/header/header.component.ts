@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() public openedSideNav: boolean;
-  @Output() toggle = new EventEmitter<boolean>();
+  @Input() drawer: MatDrawer;
+  @Input() isHandset$: Observable<boolean>;
 
   total$: Observable<number>;
 
