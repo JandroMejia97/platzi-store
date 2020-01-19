@@ -1,24 +1,24 @@
-<form>
+<form [formGroup]="contactForm">
   <h2>Contact Us</h2>
 
   <!-- Name -->
   <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name" id="name">
+    <mat-label>Full Name</mat-label>
+    <input matInput placeholder="Enter your full name." type="text" formControlName="name" id="name" required>
   </mat-form-field>
 
   <!-- Email -->
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput type="email" formControlName="email" id="email">
+    <input matInput placeholder="Enter your email." type="email" formControlName="email" id="email" required>
   </mat-form-field>
 
   <!-- Subject -->
   <mat-form-field>
     <mat-label>Subject</mat-label>
-    <mat-select formControlName="subjects">
+    <mat-select formControlName="subject" required>
       <mat-option value="" disabled>Choose option</mat-option>
-      <mat-option value="1" selected>Feedback</mat-option>
+      <mat-option value="1">Feedback</mat-option>
       <mat-option value="2">Report a bug</mat-option>
       <mat-option value="3">Feature request</mat-option>
       <mat-option value="4">Feature request</mat-option>
@@ -28,13 +28,12 @@
   <!-- Message -->
   <mat-form-field>
     <mat-label>Leave a message</mat-label>
-    <textarea matInput formControlName="message" id="message"
-      rows="3"></textarea>
+    <textarea matInput placeholder="Enter your message." formControlName="message" id="message" rows="3" required></textarea>
   </mat-form-field>
 
   <!-- Send button -->
-  <button mat-raised-button>Cancel</button>
-  <button mat-raised-button color="primary" type="submit">Send</button>
+  <a mat-raised-button routerLink="/home">Cancel</a>
+  <button mat-raised-button color="primary" type="submit" required (click)="sendForm()" [disabled]="contactForm.invalid">Send</button>
 
 </form>
 <!-- Default form contact -->
