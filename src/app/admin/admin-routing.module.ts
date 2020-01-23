@@ -6,7 +6,6 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
 import { DateComponent } from './components/date/date.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 

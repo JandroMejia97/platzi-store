@@ -20,14 +20,14 @@ import { QuicklinkModule } from 'ngx-quicklink';
 @NgModule({
   declarations: [
     NavComponent,
+    PdfComponent,
     TreeComponent,
+    DateComponent,
     DashboardComponent,
     OrdersListComponent,
     ProductFormComponent,
     ProductsListComponent,
     ProductFormGeneratedComponent,
-    DateComponent,
-    PdfComponent,
   ],
   imports: [
     CommonModule,
