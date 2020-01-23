@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from 'src/environments/environment';
 
@@ -26,6 +27,7 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularFireStorageModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

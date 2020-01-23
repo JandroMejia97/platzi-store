@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/core/models/product.model';
 import { CartService } from 'src/app/core/services/cart.service';
 import { Observable } from 'rxjs';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { CreditCardValidators } from 'src/app/utils/credit-card.validators';
 import { PaymentFormComponent } from '../payment-form/payment-form.component';
 import { PersonalDataFormComponent } from '../personal-data-form/personal-data-form.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -14,8 +14,13 @@ import { PersonalDataFormComponent } from '../personal-data-form/personal-data-f
 })
 export class OrderComponent implements OnInit {
   products$: Observable<Product[]>;
-  @ViewChild(PaymentFormComponent, {static: false}) paymentFormComponent: PaymentFormComponent;
-  @ViewChild(PersonalDataFormComponent, {static: false}) dataFormComponent: PersonalDataFormComponent;
+  @ViewChild(PaymentFormComponent, { static: false }) paymentFormComponent: PaymentFormComponent;
+  @ViewChild(PersonalDataFormComponent, { static: false }) dataFormComponent: PersonalDataFormComponent;
+  isMedium$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
   get paymentForm() {
     return this.paymentFormComponent ? this.paymentFormComponent.paymentForm : null;
@@ -26,7 +31,8 @@ export class OrderComponent implements OnInit {
   }
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.products$ = this.cartService.cart$;
   }
