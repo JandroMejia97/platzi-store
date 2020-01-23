@@ -7,6 +7,8 @@ import { OrdersListComponent } from './components/orders-list/orders-list.compon
 import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { DateComponent } from './components/date/date.component';
+import { PdfComponent } from './components/pdf/pdf.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,14 @@ const routes: Routes = [
       {
         path: 'orders',
         component: OrdersListComponent
+      },
+      {
+        path: 'dates',
+        component: DateComponent
+      },
+      {
+        path: 'pdf',
+        component: PdfComponent
       },
       {
         path: 'dashboard',

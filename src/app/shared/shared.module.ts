@@ -16,6 +16,7 @@ import { CreditCardExpirationDateInput } from './inputs/credit-card-expiration-d
 import { CardNumberDirective } from './directives/card-number/card-number.directive';
 import { CardExpirationDateDirective } from './directives/card-expiration-date/card-expiration-date.directive';
 import { CardSecurityCodeDirective } from './directives/card-security-code/card-security-code.directive';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CardSecurityCodeDirective } from './directives/card-security-code/card-
     RouterModule,
     CommonModule,
     MaterialModule,
+    QuicklinkModule,
     ReactiveFormsModule,
   ],
   exports: [

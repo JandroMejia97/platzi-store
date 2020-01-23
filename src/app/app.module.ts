@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
+import { QuicklinkModule } from 'ngx-quicklink';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -22,6 +23,7 @@ import { environment } from 'src/environments/environment';
     CoreModule,
     SharedModule,
     BrowserModule,
+    QuicklinkModule,
     HttpClientModule,
     AppRoutingModule,
     AngularFireAuthModule,

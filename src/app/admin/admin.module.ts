@@ -13,6 +13,9 @@ import { OrdersListComponent } from './components/orders-list/orders-list.compon
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductFormGeneratedComponent } from './components//product-form-generated/product-form-generated.component';
+import { DateComponent } from './components/date/date.component';
+import { PdfComponent } from './components/pdf/pdf.component';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -23,11 +26,14 @@ import { ProductFormGeneratedComponent } from './components//product-form-genera
     ProductFormComponent,
     ProductsListComponent,
     ProductFormGeneratedComponent,
+    DateComponent,
+    PdfComponent,
   ],
   imports: [
     CommonModule,
     LayoutModule,
     MaterialModule,
+    QuicklinkModule,
     AdminRoutingModule,
     ReactiveFormsModule
   ],

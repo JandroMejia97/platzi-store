@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { AdminGuard } from './guards/admin.guard';
+import { PreloadService } from './core/services/preload.service';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 
 const routes: Routes = [
@@ -17,11 +19,13 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(h => h.HomeModule)
+        loadChildren: () => import('./home/home.module').then(h => h.HomeModule),
+        data: { preload: true }
       },
       {
         path: 'contact',
-        loadChildren: () => import('./contact/contact.module').then(c => c.ContactModule)
+        loadChildren: () => import('./contact/contact.module').then(c => c.ContactModule),
+        data: { preload: true }
       },
       {
         path: 'about',
@@ -29,7 +33,8 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        loadChildren: () => import('./product/product.module').then(p => p.ProductModule)
+        loadChildren: () => import('./product/product.module').then(p => p.ProductModule),
+        data: { preload: true }
       },
       {
         path: 'orders',
@@ -55,7 +60,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
+      // preloadingStrategy: PreloadService
+      enableTracing: false,
+      preloadingStrategy: QuicklinkStrategy,
+      paramsInheritanceStrategy: 'always'
     })],
   exports: [
     RouterModule
