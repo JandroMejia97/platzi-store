@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd} from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 declare var gtag;
 
@@ -12,7 +13,14 @@ declare var gtag;
 export class AppComponent {
   title = 'Platzi Store';
 
-  constructor(private router: Router) {
+  // tslint:disable-next-line: ban-types
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(platformId)) {
+      this.loadGA();
+    }
+  }
+
+  loadGA() {
     const navEvents$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     );

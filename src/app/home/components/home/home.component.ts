@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import Swiper from 'swiper';
 
@@ -10,14 +11,17 @@ import Swiper from 'swiper';
 export class HomeComponent implements OnInit, AfterViewInit {
   swiper: Swiper;
 
-  constructor() { }
+  // tslint:disable-next-line: ban-types
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
 
   }
 
   ngAfterViewInit(): void {
-    this.swiper = new Swiper('.swiper-container');
+    if (isPlatformBrowser(this.platformId)) {
+      this.swiper = new Swiper('.swiper-container');
+    }
   }
 
 }
