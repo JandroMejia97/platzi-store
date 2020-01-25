@@ -164,7 +164,7 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
-            "main": "src/main.server.ts",
+            "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
@@ -178,6 +178,30 @@
               "sourceMap": false,
               "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "platzi-store:build",
+            "serverTarget": "platzi-store:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "platzi-store:build:production",
+              "serverTarget": "platzi-store:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "platzi-store:build:production",
+            "serverTarget": "platzi-store:server:production",
+            "routes": []
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
