@@ -16,7 +16,8 @@
     "dev:ssr": "ng run platzi-store:serve-ssr",
     "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build --prod && ng run platzi-store:server:production",
-    "prerender": "ng run platzi-store:prerender"
+    "prerender": "ng run platzi-store:prerender",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
@@ -37,7 +38,6 @@
     "@nguniversal/express-engine": "^9.0.0-rc.1",
     "date-fns": "^2.9.0",
     "express": "^4.15.2",
-    "firebase": "^7.6.2",
     "ngx-quicklink": "^0.2.0",
     "payment": "^2.3.0",
     "rxjs": "~6.5.4",
@@ -57,8 +57,9 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
-    "guess-parser": "^0.4.13",
-    "guess-webpack": "^0.4.13",
+    "firebase": "^7.7.0",
+    "guess-parser": "^0.4.14",
+    "guess-webpack": "^0.4.14",
     "jasmine-core": "^3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
