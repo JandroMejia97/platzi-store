@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from 'src/app/core/models/product.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({

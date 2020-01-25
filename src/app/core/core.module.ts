@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './services/products.service';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 

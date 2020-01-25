@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { shareReplay, map } from 'rxjs/operators';
-import { MatDrawer } from '@angular/material';
+import { MatDrawer } from '@angular/material/sidenav';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { HeaderComponent } from '../header/header.component';
 

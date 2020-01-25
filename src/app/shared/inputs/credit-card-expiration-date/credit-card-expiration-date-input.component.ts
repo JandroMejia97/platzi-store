@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, HostBinding, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, NgControl, Validators } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { MatFormFieldControl } from '@angular/material';
+import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
