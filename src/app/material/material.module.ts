@@ -23,7 +23,8 @@ import {
   MatFormFieldModule,
   MatPaginatorModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatChipsModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -42,6 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatRadioModule,
     MatTableModule,
+    MatChipsModule,
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
@@ -68,6 +70,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatRadioModule,
     MatTableModule,
+    MatChipsModule,
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,

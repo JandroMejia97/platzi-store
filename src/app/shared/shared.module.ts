@@ -17,6 +17,7 @@ import { CardNumberDirective } from './directives/card-number/card-number.direct
 import { CardExpirationDateDirective } from './directives/card-expiration-date/card-expiration-date.directive';
 import { CardSecurityCodeDirective } from './directives/card-security-code/card-security-code.directive';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { FibonacciPipe } from './pipes/fibonacci/fibonacci.pipe';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { QuicklinkModule } from 'ngx-quicklink';
     CardSecurityCodeDirective,
     CardExpirationDateDirective,
     CreditCardExpirationDateInput,
+    FibonacciPipe,
   ],
   imports: [
     RouterModule,
@@ -43,6 +45,7 @@ import { QuicklinkModule } from 'ngx-quicklink';
     ReactiveFormsModule,
   ],
   exports: [
+    FibonacciPipe,
     ExponentialPipe,
     HeaderComponent,
     FooterComponent,
