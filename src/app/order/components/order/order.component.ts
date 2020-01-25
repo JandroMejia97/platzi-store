@@ -14,8 +14,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class OrderComponent implements OnInit {
   products$: Observable<Product[]>;
-  @ViewChild(PaymentFormComponent, { static: false }) paymentFormComponent: PaymentFormComponent;
-  @ViewChild(PersonalDataFormComponent, { static: false }) dataFormComponent: PersonalDataFormComponent;
+  @ViewChild(PaymentFormComponent) paymentFormComponent: PaymentFormComponent;
+  @ViewChild(PersonalDataFormComponent) dataFormComponent: PersonalDataFormComponent;
   isMedium$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

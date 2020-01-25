@@ -11,7 +11,7 @@ import { ProductFormComponent } from '../product-form/product-form.component';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  @ViewChild('productTable', {static: false}) table: MatTable<Product>;
+  @ViewChild('productTable') table: MatTable<Product>;
   products: Product[] = [];
 
   displayedColumns = ['id', 'title', 'price', 'actions'];
