@@ -3,6 +3,8 @@ import { GeneratorService } from '@core/services/generator.service';
 import { EmployeeData } from '@core/models/employee.model';
 import { Subscription, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { UserService } from '@core/services/user.service';
+import { User } from '@core/models/user.model';
 
 const names = [
   'Carlos',
@@ -26,10 +28,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
   value$: Observable<number>;
   sub$: Subscription;
 
-  constructor(private generatorService: GeneratorService) {
+  constructor(
+    private userService: UserService,
+    private generatorService: GeneratorService,
+  ) {
     this.value$ = this.generatorService.getData().pipe(
       tap(value => console.log(value))
     );
+    this.userService.getUsers().subscribe((users: User[]) => console.log(users));
   }
 
   ngOnInit() {
