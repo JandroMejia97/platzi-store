@@ -9,9 +9,9 @@ import { MaterialModule } from '../material/material.module';
 import { NavComponent } from './components/nav/nav.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { OrdersListComponent } from './components/orders-list/orders-list.component';
+import { OrdersListContainer } from './containers/orders-list/orders-list.container';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductsListContainer } from './containers/products-list/products-list.container';
 import { ProductFormGeneratedComponent } from './components//product-form-generated/product-form-generated.component';
 import { DateComponent } from './components/date/date.component';
 import { PdfComponent } from './components/pdf/pdf.component';
@@ -24,9 +24,9 @@ import { QuicklinkModule } from 'ngx-quicklink';
     TreeComponent,
     DateComponent,
     DashboardComponent,
-    OrdersListComponent,
+    OrdersListContainer,
     ProductFormComponent,
-    ProductsListComponent,
+    ProductsListContainer,
     ProductFormGeneratedComponent,
   ],
   imports: [

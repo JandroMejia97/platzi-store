@@ -3,14 +3,15 @@ import { MatTable } from '@angular/material/table';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from 'src/app/core/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductFormComponent } from '../product-form/product-form.component';
+import { ProductFormComponent } from '../../components/product-form/product-form.component';
 
 @Component({
   selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  templateUrl: './products-list.container.html',
+  styleUrls: ['./products-list.container.scss']
 })
-export class ProductsListComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class ProductsListContainer implements OnInit {
   @ViewChild('productTable') table: MatTable<Product>;
   products: Product[] = [];
 

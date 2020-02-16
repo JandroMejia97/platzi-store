@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-// import { StorageService } from 'src/app/services/storage.service';
-// import { LoginObject } from 'src/app/models/login-object';
-// import { Session } from 'src/app/models/session';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  templateUrl: './auth.container.html',
+  styleUrls: ['./auth.container.scss']
 })
-export class AuthComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class AuthContainer implements OnInit {
   public form: FormGroup;
   public submitted = false;
 

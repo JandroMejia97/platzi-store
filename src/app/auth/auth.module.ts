@@ -6,14 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '../material/material.module';
 
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthContainer } from './containers/auth/auth.container';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
   declarations: [
-    AuthComponent,
+    AuthContainer,
     LoginComponent,
     RegisterComponent
   ],

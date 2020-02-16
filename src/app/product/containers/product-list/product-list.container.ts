@@ -4,10 +4,11 @@ import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  templateUrl: './product-list.container.html',
+  styleUrls: ['./product-list.container.scss']
 })
-export class ProductListComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class ProductListContainer implements OnInit {
   products: Product[];
 
   constructor(private productService: ProductsService) { }

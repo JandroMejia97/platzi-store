@@ -6,10 +6,11 @@ import { OrdersService } from 'src/app/core/services/orders.service';
 
 @Component({
   selector: 'app-orders-list',
-  templateUrl: './orders-list.component.html',
-  styleUrls: ['./orders-list.component.scss']
+  templateUrl: './orders-list.container.html',
+  styleUrls: ['./orders-list.container.scss']
 })
-export class OrdersListComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class OrdersListContainer implements OnInit {
   @ViewChild('orderTable') table: MatTable<Order>;
   orders: Order[] = [];
 
