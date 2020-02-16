@@ -1,4 +1,4 @@
-<mat-card *ngIf="product">
+<mat-card *ngIf="(product$ | async) as product">
   <mat-card-header>
     <mat-card-title>
       <h2>{{ product.title | uppercase }}</h2>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@core/models/product.model';
 import { ProductsService } from '@core/services/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +10,7 @@ import { ProductsService } from '@core/services/products.service';
 })
 // tslint:disable-next-line: component-class-suffix
 export class ProductListContainer implements OnInit {
-  products: Product[];
+  products$: Observable<Product[]>;
 
   constructor(private productService: ProductsService) { }
 
@@ -22,9 +23,7 @@ export class ProductListContainer implements OnInit {
   }
 
   getProducts() {
-    this.productService.getList().subscribe((resp) => {
-      this.products = resp;
-    });
+    this.products$ = this.productService.getList();
   }
 
 }
