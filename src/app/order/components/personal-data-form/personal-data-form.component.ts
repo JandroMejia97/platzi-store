@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Province } from 'src/app/core/models/province.model';
-import { ProvinceService } from 'src/app/core/services/province.service';
+import { Province } from '@core/models/province.model';
+import { ProvinceService } from '@core/services/province.service';
 
 @Component({
   selector: 'app-personal-data-form',

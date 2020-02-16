@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Contact } from '../models/contact.model';
+import { Contact } from '@core/models/contact.model';
 import { MessageService } from './message.service';
 import { Router } from '@angular/router';
 

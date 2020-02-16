@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/app/core/models/product.model';
-import { CartService } from 'src/app/core/services/cart.service';
+import { Product } from '@core/models/product.model';
+import { CartService } from '@core/services/cart.service';
 import { Observable } from 'rxjs';
-import { PaymentFormComponent } from '../payment-form/payment-form.component';
-import { PersonalDataFormComponent } from '../personal-data-form/personal-data-form.component';
+import { PaymentFormComponent } from '@order/components/payment-form/payment-form.component';
+import { PersonalDataFormComponent } from '@order/components/personal-data-form/personal-data-form.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 

@@ -7,7 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '@material/material.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CountProductsPipe } from './pipes/count-products/count-products.pipe';

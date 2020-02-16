@@ -3,8 +3,8 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { Resource } from '../models/resource.model';
-import { MessageService } from '../services/message.service';
+import { Resource } from '@core/models/resource.model';
+import { MessageService } from '@core/services/message.service';
 
 export abstract class ResourcesService<T extends Resource> {
   protected url: string;

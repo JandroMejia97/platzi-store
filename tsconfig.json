@@ -17,7 +17,20 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@home/*": ["src/app/home/*"],
+      "@admin/*": ["src/app/admin/*"],
+      "@about/*": ["src/app/about/*"],
+      "@order/*": ["src/app/order/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@contact/*": ["src/app/contact/*"],
+      "@product/*": ["src/app/product/*"],
+      "@material/*": ["src/app/material/*"],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

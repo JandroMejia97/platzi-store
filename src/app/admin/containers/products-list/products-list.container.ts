@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { ProductsService } from 'src/app/core/services/products.service';
-import { Product } from 'src/app/core/models/product.model';
+import { ProductsService } from '@core/services/products.service';
+import { Product } from '@core/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductFormComponent } from '../../components/product-form/product-form.component';
+import { ProductFormComponent } from '@admin/components/product-form/product-form.component';
 
 @Component({
   selector: 'app-products-list',

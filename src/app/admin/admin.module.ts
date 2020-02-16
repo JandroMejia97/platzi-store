@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '@material/material.module';
 
 import { NavComponent } from './components/nav/nav.component';
 import { TreeComponent } from './components/tree/tree.component';

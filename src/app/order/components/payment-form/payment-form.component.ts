@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CreditCardValidators } from 'src/app/utils/credit-card.validators';
+import { CreditCardValidators } from '@utils/credit-card.validators';
 
 @Component({
   selector: 'app-payment-form',

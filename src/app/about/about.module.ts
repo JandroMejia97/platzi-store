@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { AboutRoutingModule } from './about-routing.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ListComponent } from './components/list/list.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '@material/material.module';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({

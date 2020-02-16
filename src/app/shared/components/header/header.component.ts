@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CartService } from 'src/app/core/services/cart.service';
+import { CartService } from '@core/services/cart.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';

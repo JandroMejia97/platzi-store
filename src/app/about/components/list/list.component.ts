@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { EmployeeData } from 'src/app/core/models/employee.model';
+import { EmployeeData } from '@core/models/employee.model';
 
 @Component({
   selector: 'app-list',

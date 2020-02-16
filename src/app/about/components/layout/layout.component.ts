@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GeneratorService } from 'src/app/core/services/generator.service';
-import { EmployeeData } from 'src/app/core/models/employee.model';
+import { GeneratorService } from '@core/services/generator.service';
+import { EmployeeData } from '@core/models/employee.model';
 import { Subscription, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 

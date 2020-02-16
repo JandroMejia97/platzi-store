@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Province } from '../models/province.model';
+import { Province } from '@core/models/province.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
