@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from 'src/environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SentryErrorHandler } from '@core/services/sentry-error-handler.service';
+
+import * as Sentry from '@sentry/browser';
+
+if (environment.production) {
+  Sentry.init({
+    dsn: environment.sentry.dsn
+  });
+}
 
 @NgModule({
   declarations: [
@@ -23,7 +32,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   imports: [
     CoreModule,
     SharedModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     QuicklinkModule,
     HttpClientModule,
     AppRoutingModule,
@@ -31,10 +39,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     BrowserAnimationsModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: SentryErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
