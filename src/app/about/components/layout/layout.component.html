@@ -1,4 +1,5 @@
 <p>Value: {{ value$ | async }}</p>
+<button mat-raised-button (click)="getFile()">Get File</button>
 <div>
   <app-list
     (add)="addItem(salesList, $event)"

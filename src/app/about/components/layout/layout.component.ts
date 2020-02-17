@@ -5,7 +5,8 @@ import { Subscription, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from '@core/services/user.service';
 import { User } from '@core/models/user.model';
-import { element } from 'protractor';
+
+import * as FileSaver from 'file-saver';
 
 const names = [
   'Carlos',
@@ -64,6 +65,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     console.log(list);
   }
 
+  getFile() {
+    this.userService.getFile().subscribe(content => {
+      const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+      FileSaver.saveAs(blob, 'test.txt');
+    });
+  }
 
   ngOnDestroy() {
     console.log('Destroy');
