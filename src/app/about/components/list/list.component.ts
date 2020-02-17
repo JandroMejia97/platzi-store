@@ -11,6 +11,7 @@ export class ListComponent implements OnInit {
   @Input() title: string;
   @Input() data: EmployeeData[] = [];
   @Output() add = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<string>();
   label: string;
 
   constructor() { }

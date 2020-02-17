@@ -2,11 +2,13 @@
 <div>
   <app-list
     (add)="addItem(salesList, $event)"
+    (delete)="deleteItem(salesList, $event)"
     [title]="'Sales'"
     [data]="salesList">
   </app-list>
   <app-list
     (add)="addItem(bList, $event)"
+    (delete)="deleteItem(bList, $event)"
     [title]="'B List'"
     [data]="bList">
   </app-list>

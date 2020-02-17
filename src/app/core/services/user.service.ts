@@ -10,7 +10,7 @@ import * as Sentry from '@sentry/browser';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'https://randomuserss.me/api/?results=5';
+  url = 'https://randomuser.me/api/?results=5';
 
   constructor(private http: HttpClient) { }
 

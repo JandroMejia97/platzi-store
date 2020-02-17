@@ -5,6 +5,7 @@ import { Subscription, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from '@core/services/user.service';
 import { User } from '@core/models/user.model';
+import { element } from 'protractor';
 
 const names = [
   'Carlos',
@@ -49,11 +50,18 @@ export class LayoutComponent implements OnInit, OnDestroy {
     */
   }
 
-  addItem(list: EmployeeData[], label) {
+  addItem(list: EmployeeData[], label: string) {
     list.unshift({
       label,
       num: this.generatorService.generateNumber([10, 20])
     });
+  }
+
+  deleteItem(list: EmployeeData[], item: EmployeeData) {
+    console.log(list);
+    // tslint:disable-next-line: no-shadowed-variable
+    list.splice(list.indexOf(item), 1);
+    console.log(list);
   }
 
 
