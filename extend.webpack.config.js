@@ -4,19 +4,14 @@ const { parseRoutes } = require('guess-parser');
 
 module.exports = {
   plugins: [
-    /*new GuessPlugin({
-      // Alternatively you can provide a Google Analytics View ID
-      GA: '221015399',
-      // reportProvider() {
-      //   return Promise.resolve(JSON.parse(require('fs').readFileSync('./routes.json')));
-      // },
-
+    new GuessPlugin({
+      GA: '210123163',
       runtime: {
         delegate: false
       },
       routeProvider() {
         return parseRoutes('.');
       }
-    })*/
+    })
   ]
 };

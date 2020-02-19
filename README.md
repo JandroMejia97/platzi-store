@@ -92,3 +92,12 @@ With this ready you can see the project running on port **4200**, just open a br
 - [Clonar Repositorio Angular desde GitHub](https://platzi.com/tutoriales/1153-angular/2008-clonar-repositorio-angular-desde-github/)
 - [Deploying an Angular App to Firebase Hosting](https://alligator.io/angular/deploying-angular-app-to-firebase/)
 - [Using windows command shell for creating multiple files](https://stackoverflow.com/questions/28965911/using-windows-command-shell-for-creating-multiple-files)
+
+<!--
+  docker build . -t platzi-store:latest 
+  docker run -d -p 80:80 platzi-store:latest
+  http://192.168.99.100
+  PWA
+  ng add @angular/pwa
+
+-->
