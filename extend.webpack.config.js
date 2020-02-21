@@ -4,7 +4,7 @@ const { parseRoutes } = require('guess-parser');
 
 module.exports = {
   plugins: [
-    new GuessPlugin({
+    /*new GuessPlugin({
       GA: '210123163',
       runtime: {
         delegate: false
@@ -12,6 +12,6 @@ module.exports = {
       routeProvider() {
         return parseRoutes('.');
       }
-    })
+    })*/
   ]
 };
