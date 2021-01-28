@@ -29,7 +29,7 @@
       "@shared/*": ["src/app/shared/*"],
       "@contact/*": ["src/app/contact/*"],
       "@product/*": ["src/app/product/*"],
-      "@material/*": ["src/app/material/*"],
+      "@material/*": ["src/app/material/*"]
     }
   },
   "angularCompilerOptions": {
