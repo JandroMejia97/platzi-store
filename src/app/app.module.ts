@@ -22,7 +22,17 @@ import * as Sentry from '@sentry/browser';
 
 if (environment.production) {
   Sentry.init({
-    dsn: environment.sentry.dsn
+    dsn: environment.sentry.dns,
+    /*integrations: [
+      new Sentry.Integrations.BrowserTracing({
+        tracingOrigins: ['localhost', 'https://yourserver.io/api'],
+        routingInstrumentation: Sentry.routingInstrumentation,
+      }),
+    ],*/
+
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
   });
 }
 
