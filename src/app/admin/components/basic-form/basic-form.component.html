@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Basic Form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="basicForm" [formGroup]="form" novalidate (ngSubmit)="submitForm()">
+      <div formGroupName="fullName">
+        <mat-form-field>
+          <mat-label>
+            First Name
+          </mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            Last Name
+          </mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="lastName">
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" type="submit" form="basicForm">Enviar</button>
+  </mat-card-actions>
+</mat-card>
+

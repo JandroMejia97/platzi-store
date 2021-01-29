@@ -16,6 +16,7 @@ import { ProductFormGeneratedComponent } from './components//product-form-genera
 import { DateComponent } from './components/date/date.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { BasicFormComponent } from './components/basic-form/basic-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { QuicklinkModule } from 'ngx-quicklink';
     TreeComponent,
     DateComponent,
     DashboardComponent,
+    BasicFormComponent,
     OrdersListContainer,
     ProductFormComponent,
     ProductsListContainer,

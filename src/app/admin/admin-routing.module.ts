@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrdersListContainer } from './containers/orders-list/orders-list.container';
 import { ProductsListContainer } from './containers/products-list/products-list.container';
 import { ProductFormGeneratedComponent } from './components/product-form-generated/product-form-generated.component';
+import { BasicFormComponent } from './components/basic-form/basic-form.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
       {
         path: 'generic-form',
         component: ProductFormGeneratedComponent
+      },
+      {
+        path: 'basic',
+        component: BasicFormComponent
       }
     ]
   },

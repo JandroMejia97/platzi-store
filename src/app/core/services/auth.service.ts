@@ -18,15 +18,15 @@ export class AuthService {
   ) { }
 
   signIn(email: string, password: string) {
-    return this.angularAuth.auth.createUserWithEmailAndPassword(email, password);
+    return this.angularAuth.createUserWithEmailAndPassword(email, password);
   }
 
   signUp(email: string, password: string) {
-    return this.angularAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.angularAuth.signInWithEmailAndPassword(email, password);
   }
 
   signOut() {
-    return this.angularAuth.auth.signOut();
+    return this.angularAuth.signOut();
   }
 
   loginRestApi(email: string, password: string) {
