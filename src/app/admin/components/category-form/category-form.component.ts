@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from '@core/models/category.model';
 import { CategoriesService } from '@core/services/categories.service';
+import { CustomValidators } from '@utils/custom.validators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
@@ -38,7 +39,12 @@ export class CategoryFormComponent implements OnInit {
   buildForm() {
     this.form = this.formBuilder.group({
       id: [null, [Validators.required]],
-      name: ['', Validators.required],
+      name: ['', [
+          Validators.required,
+          Validators.minLength(4),
+        ],
+        CustomValidators.checkAvailability(this.categoryService)
+      ],
       image: ['', Validators.required],
     });
   }

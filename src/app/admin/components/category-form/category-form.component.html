@@ -18,6 +18,16 @@
           This field is required.
         </ng-container>
       </mat-error>
+      <mat-error *ngIf="nameField?.touched && nameField.invalid">
+        <ng-container *ngIf="nameField.hasError('notavailable')">
+          This name isn't available.
+        </ng-container>
+      </mat-error>
+      <mat-error *ngIf="nameField?.touched && nameField.invalid">
+        <ng-container *ngIf="nameField.hasError('minlength')">
+          At least 4 characters were expected, but {{nameField.value.length}} was entered.
+        </ng-container>
+      </mat-error>
     </mat-form-field>
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-form-field>

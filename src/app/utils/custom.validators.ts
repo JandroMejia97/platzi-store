@@ -1,4 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { CategoriesService } from '@core/services/categories.service';
+import { map } from 'rxjs/operators';
 
 export class CustomValidators {
 
@@ -22,6 +24,19 @@ export class CustomValidators {
     const repeatPassword = control.get('repeatPassword').value;
     const condition = password === repeatPassword;
     return condition ? null : {passwordsmatch: true};
+  }
+
+  static checkAvailability(service: CategoriesService): ValidationErrors | null {
+    return (control: AbstractControl) => {
+        const { value } = control;
+        return service.checkAvailability(value)
+          .pipe(
+            map((resp: {isAvailable: boolean}) => {
+              const {isAvailable} = resp;
+              return isAvailable ? null : { notavailable: true };
+            })
+          );
+    };
   }
 
 }
