@@ -28,21 +28,34 @@
         <ng-container *ngIf="passwordField.hasError('required')">
           Este campo es requerido.
         </ng-container>
+      </mat-error>
+      <mat-error *ngIf="passwordField.touched && passwordField.invalid">
         <ng-container *ngIf="passwordField.hasError('invalidpassword')">
           Debe incluir al menos un número.
         </ng-container>
+      </mat-error>
+      <mat-error *ngIf="passwordField.touched && passwordField.invalid">
         <ng-container *ngIf="passwordField.hasError('minlength')">
           Se esperaban al menos 8 carácteres, pero se han ingresado {{ passwordField.value.length }}.
         </ng-container>
       </mat-error>
-    </mat-form-field>
+      </mat-form-field>
     <mat-form-field>
       <input
         matInput
         required
         placeholder="Password"
         formControlName="repeatPassword"
-        [type]="hidePassword ? 'password' : 'text'">
+        [type]="hidePassword ? 'password' : 'text'"
+        [errorStateMatcher]="crossFieldErrorStateMatcher">
+        <mat-error *ngIf="form.hasError('passwordsmatch')">
+          Las contraseñas no coinciden.
+        </mat-error>
+        <mat-error *ngIf="repeatPasswordField.touched && repeatPasswordField.invalid">
+          <ng-container *ngIf="repeatPasswordField.hasError('required')">
+            Este campo es requerido.
+          </ng-container>
+        </mat-error>
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions align="end">

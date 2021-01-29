@@ -1,9 +1,9 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export class CustomValidators {
 
-  static isPriceValid(control: AbstractControl): any {
-    const value = control.value;
+  static isPriceValid(control: AbstractControl): ValidationErrors | null {
+    const {value} = control;
     if (value > 10000) {
       return {
         price_invalid: true
@@ -12,13 +12,16 @@ export class CustomValidators {
     return null;
   }
 
-  static validatePassword(control: AbstractControl): any {
+  static validatePassword(control: AbstractControl): ValidationErrors | null {
     const {value} = control;
-    console.log({value})
-    if (!containsNumber(value)) {
-      return {invalidpassword: true};
-    }
-    return null;
+    return containsNumber(value) ? null : {invalidpassword: true};
+  }
+
+  static mathcPasswords(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password').value;
+    const repeatPassword = control.get('repeatPassword').value;
+    const condition = password === repeatPassword;
+    return condition ? null : {passwordsmatch: true};
   }
 
 }

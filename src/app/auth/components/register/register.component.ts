@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { CustomValidators } from '@utils/custom.validators';
+import { CrossFieldErrorStateMatcher } from '@utils/cross-field.error-state-matcher';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup;
   public hidePassword = true;
+  public crossFieldErrorStateMatcher = new CrossFieldErrorStateMatcher('passwordsmatch');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +32,8 @@ export class RegisterComponent implements OnInit {
         CustomValidators.validatePassword
       ])],
       repeatPassword: ['', Validators.required]
+    }, {
+      validators: CustomValidators.mathcPasswords
     });
   }
 
@@ -46,6 +51,8 @@ export class RegisterComponent implements OnInit {
       .catch(error => {
         this.authService.log(`¡Error! ${error.message}`);
       });
+    } else {
+      this.authService.log(`¡Error! El formulario no es válido.`);
     }
   }
 
