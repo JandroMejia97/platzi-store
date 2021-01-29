@@ -1,14 +1,21 @@
-<div class="auth-container" fxLayout="row" fxLayoutAlign="center center">
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Sign Up">
-      <mat-card>
-        <app-login [form]="form" (sendForm)="submitSignUp()"></app-login>
-      </mat-card>
-    </mat-tab>
-    <mat-tab label="Sign In">
-      <mat-card>
-        <app-register [form]="form" (sendForm)="submitSignIn()"></app-register>
-      </mat-card>
-    </mat-tab>
-  </mat-tab-group>
+<div class="container">
+  <mat-card>
+    <nav mat-tab-nav-bar mat-align-tabs="center">
+      <a mat-tab-link
+        routerLinkActive
+        #rla="routerLinkActive"
+        active="rla.isActive"
+        routerLink="login">
+        Sign Up
+      </a>
+      <a mat-tab-link
+        routerLinkActive
+        #rla="routerLinkActive"
+        active="rla.isActive"
+        routerLink="signin">
+        Sign In
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+  </mat-card>
 </div>
