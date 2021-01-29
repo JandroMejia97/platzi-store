@@ -5,7 +5,7 @@ import { Product } from '@core/models/product.model';
 import { ProductsService } from '@core/services/products.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
@@ -14,29 +14,30 @@ import { Observable } from 'rxjs';
 })
 export class ProductFormComponent implements OnInit {
   formGroup: FormGroup;
-  image$: Observable<string>;
+  subject: BehaviorSubject<string>;
+  imageUrl$: Observable<string>;
   uploadPercent$: Observable<number>;
 
   constructor(
+    private afs: AngularFireStorage,
     private formBuilder: FormBuilder,
     private productService: ProductsService,
-    private angularStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public product: Product,
     public dialogRef: MatDialogRef<ProductFormComponent>
-  ) {
-    this.buildForm();
-  }
+  ) { }
 
   ngOnInit() {
+    this.buildForm();
     if (this.product) {
       this.formGroup.patchValue(this.product);
-      this.formGroup.get('image').setValue(this.product.image);
+      this.subject = new BehaviorSubject<string>(this.product.image);
+      this.imageUrl$ = this.subject.asObservable();
     }
   }
 
   private buildForm(): void {
     this.formGroup = this.formBuilder.group({
-      id: [null, [Validators.required]],
+      id: [null],
       title: ['', [Validators.required]],
       price: [0, [
         Validators.required,
@@ -79,16 +80,13 @@ export class ProductFormComponent implements OnInit {
   uploadFile(event: any) {
     const file = event.target.files[0];
     const path = `images/products/${file.name}`;
-    const fileRef = this.angularStorage.ref(path);
-    const task = this.angularStorage.upload(path, file);
+    const fileRef = this.afs.ref(path);
+    const task = this.afs.upload(path, file);
     this.uploadPercent$ = task.percentageChanges();
 
     task.snapshotChanges().pipe(
       finalize(() => {
-        this.image$ = fileRef.getDownloadURL();
-        this.image$.subscribe(url => {
-          this.formGroup.get('image').setValue(url);
-        });
+        this.imageUrl$ = fileRef.getDownloadURL();
       })
     ).subscribe();
   }

@@ -30,7 +30,8 @@ export abstract class ResourcesService<T extends Resource> {
   }
 
   getObject(object: number | T): Observable<T> {
-    const id = typeof object === 'number' ? object : object.id;
+    const isPrimitiveType = typeof object === 'number' || typeof object === 'string';
+    const id = isPrimitiveType ? object : (object as T).id;
     return this.http.get<T>(`${this.url}/${id}`, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Data obtained successfully.`))

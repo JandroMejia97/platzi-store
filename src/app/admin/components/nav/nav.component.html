@@ -20,6 +20,10 @@
         <mat-icon>home</mat-icon>
         Home
       </a>
+      <a mat-list-item [routerLink]="['/admin/categories']" routerLinkActive="active">
+        <mat-icon>category</mat-icon>
+        Categories
+      </a>
       <a mat-list-item [routerLink]="['/admin/products']" routerLinkActive="active">
         <mat-icon>store</mat-icon>
         Products
@@ -45,7 +49,7 @@
         Tree
       </a>
       <a mat-list-item [routerLink]="['/admin/generic-form']" routerLinkActive="active">
-        <mat-icon>description</mat-icon>
+        <mat-icon>dynamic_form</mat-icon>
         Generic Form
       </a>
       <a mat-list-item [routerLink]="['/admin/basic']" routerLinkActive="active">

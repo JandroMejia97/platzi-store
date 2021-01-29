@@ -1,62 +1,81 @@
+<h1 mat-dialog-title>
+  {{ (product ? 'Edit Product: ' + product.title : 'Add Product') | uppercase }}
+</h1>
 <mat-dialog-content>
   <form [formGroup]="formGroup">
-    <h2>{{ product ? ('Edit Product: ' + product.title | uppercase) : 'Add Product' | uppercase }}</h2>
-    <div *ngIf="idField.errors && idField.dirty">
-      <mat-error *ngIf="idField.hasError('required')">
-        Identificator is <strong>required.</strong>
-      </mat-error>
-    </div>
-    <div *ngIf="titleField?.errors && titleField.dirty">
-      <mat-error *ngIf="titleField.hasError('required')">
-        Title is <strong>required.</strong>
-      </mat-error>
-    </div>
-    <div *ngIf="priceField?.errors && priceField.dirty">
-      <mat-error *ngIf="priceField.hasError('required')">
-        Price is <strong>required.</strong>
-      </mat-error>
-      <mat-error *ngIf="priceField.hasError('min')">
-        Price should be <strong>greater than zero.</strong>
-      </mat-error>
-    </div>
-    <div *ngIf="descriptionField?.errors && descriptionField.dirty">
-      <mat-error *ngIf="descriptionField.hasError('required')">
-        Description is <strong>required.</strong>
-      </mat-error>
-    </div>
-    <div *ngIf="imageField?.errors && imageField.dirty">
-      <mat-error *ngIf="imageField.hasError('required')">
-        Image is <strong>required.</strong>
-      </mat-error>
-    </div>
-    <mat-form-field *ngIf="!product">
-      <input matInput type="number" placeholder="Enter an identificator for this product." formControlName="id">
+    <mat-form-field>
+      <input matInput type="hidden" formControlName="id">
     </mat-form-field>
     <mat-form-field>
       <input matInput type="text" placeholder="Enter a title for this product." formControlName="title">
+      <mat-error *ngIf="titleField?.touched && titleField.invalid">
+        <ng-container *ngIf="titleField.hasError('required')">
+          Title is <strong>required.</strong>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput type="number" placeholder="Enter a price for this product." formControlName="price">
+      <mat-error *ngIf="priceField?.touched && priceField.invalid">
+        <ng-container *ngIf="priceField.hasError('required')">
+          Price is <strong>required.</strong>
+        </ng-container>
+        <ng-container *ngIf="priceField.hasError('min')">
+          Price should be <strong>greater than zero.</strong>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
     <div fxLayout="column" fxLayoutAlign="center center">
-      <input hidden #image type="file" placeholder="Upload a image for this product." (change)="uploadFile($event)">
-      <button mat-button color="primary" (click)="image.click()">
+      <input
+        hidden
+        #image
+        matInput
+        type="file"
+        placeholder="Image"
+        formControlName="image"
+        [value]="(imageUrl$ | async)"
+        (change)="uploadFile($event)">
+      <button
+        mat-button
+        color="primary"
+        (click)="image.click()"
+        [disabled]="(imageUrl$ | async) !== undefined">
         <mat-icon>file_upload</mat-icon>
         Upload Image
       </button>
-      <mat-progress-bar *ngIf="(uploadPercent$ | async) as uploadPercent" [value]="uploadPercent"></mat-progress-bar>
-      <img *ngIf="(image$ | async) as imageUrl" [src]="imageUrl">
-      <img *ngIf="!(image$ | async) && product" [src]="product.image">
+      <mat-progress-bar
+        [value]="uploadPercent"
+        *ngIf="(uploadPercent$ | async) as uploadPercent">
+      </mat-progress-bar>
+      <img *ngIf="(imageUrl$ | async) as imageUrl" [src]="imageUrl">
+      <mat-error *ngIf="imageField?.touched && imageField.invalid">
+        <ng-container *ngIf="imageField.hasError('required')">
+          Image is <strong>required.</strong>
+        </ng-container>
+      </mat-error>
     </div>
     <mat-form-field>
       <textarea matInput placeholder="Enter a description for this product." formControlName="description" rows="3">
       </textarea>
+      <mat-error *ngIf="descriptionField?.touched && descriptionField.invalid">
+        <ng-container  *ngIf="descriptionField.hasError('required')">
+          Description is <strong>required.</strong>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button (click)="close()">Cancel</button>
-  <button mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="save()">
+  <button
+    mat-raised-button
+    (click)="close()">
+    Cancel
+  </button>
+  <button
+    color="primary"
+    (click)="save()"
+    mat-raised-button
+    [disabled]="formGroup.invalid">
     <mat-icon>save</mat-icon>
     Save
   </button>

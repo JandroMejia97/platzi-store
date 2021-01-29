@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '@core/services/products.service';
 import { Product } from '@core/models/product.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductFormComponent } from '@admin/components/product-form/product-form.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products-list',
@@ -11,44 +12,49 @@ import { ProductFormComponent } from '@admin/components/product-form/product-for
   styleUrls: ['./products-list.container.scss']
 })
 // tslint:disable-next-line: component-class-suffix
-export class ProductsListContainer implements OnInit {
-  @ViewChild('productTable') table: MatTable<Product>;
+export class ProductsListContainer implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource<Product>();
   products: Product[] = [];
 
   displayedColumns = ['id', 'title', 'price', 'actions'];
 
-  constructor(private productService: ProductsService, private matDialog: MatDialog) { }
+  constructor(
+    private matDialog: MatDialog,
+    private productService: ProductsService
+  ) { }
 
   ngOnInit() {
     this.getProducts();
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+
   getProducts() {
     this.productService.getList().subscribe((resp: Product[]) => {
       this.products = resp;
-      this.table.dataSource = this.products;
+      this.dataSource.data = this.products;
     });
   }
 
   deleteProduct(deletedProduct: Product) {
     this.productService.deleteObject(deletedProduct).subscribe(() => {
       this.products = this.products.filter((product: Product) => Number(product.id) !== Number(deletedProduct.id));
-      this.table.dataSource = this.products;
-      this.table.renderRows();
+      this.dataSource.data = this.products;
     });
   }
 
   addedProduct(addedProduct: Product) {
     this.products.push(addedProduct);
-    this.table.dataSource = this.products;
-    this.table.renderRows();
+    this.dataSource.data = this.products;
   }
 
   updatedProduct(updatedProduct: Product) {
     const id = this.products.findIndex((product: Product) => Number(product.id) === Number(updatedProduct.id));
     this.products[id] = updatedProduct;
-    this.table.dataSource = this.products;
-    this.table.renderRows();
+    this.dataSource.data = this.products;
   }
 
   addDialog() {

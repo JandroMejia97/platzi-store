@@ -16,6 +16,21 @@ mat-form-field {
   width: 100% !important;
 }
 
+mat-dialog-content {
+  form {
+    max-width: 500px;
+    margin: 20px;
+
+    img {
+      max-width: 90%;
+    }
+  }
+
+  button {
+    margin: 5px;
+  }
+}
+
 mat-sidenav-container {
   height: 100%;
   position: relative;
@@ -64,6 +79,21 @@ mat-sidenav-container {
 [class*="col-"] {
   width: 100%;
   margin-right: 20px;
+}
+
+.header-table {
+  margin: 2%;
+  padding: 5px;
+}
+
+.table-container {
+  margin: 2%;
+  width: 96%;
+  text-align: left;
+}
+
+.full-width-table {
+  width: 100%;
 }
 
 @media (min-width: 576px) {

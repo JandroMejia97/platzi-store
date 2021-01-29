@@ -10,6 +10,7 @@ import { OrdersListContainer } from './containers/orders-list/orders-list.contai
 import { ProductsListContainer } from './containers/products-list/products-list.container';
 import { ProductFormGeneratedComponent } from './components/product-form-generated/product-form-generated.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
+import { CategoriesListContainer } from './containers/categories-list/categories-list.container';
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'products',
         pathMatch: 'full',
+      },
+      {
+        path: 'categories',
+        component: CategoriesListContainer
       },
       {
         path: 'products',
