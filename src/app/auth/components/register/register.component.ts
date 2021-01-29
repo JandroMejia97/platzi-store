@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm(): void {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([
@@ -31,9 +35,20 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(8),
         CustomValidators.validatePassword
       ])],
-      repeatPassword: ['', Validators.required]
+      repeatPassword: ['', Validators.required],
+      type: ['company', Validators.required],
+      companyName: ['', Validators.required]
     }, {
       validators: CustomValidators.mathcPasswords
+    });
+
+    this.typeField.valueChanges.subscribe(value => {
+      if (value === 'company') {
+        this.companyNameField.setValidators(Validators.required);
+      } else {
+        this.companyNameField.setValidators(null);
+      }
+      this.companyNameField.updateValueAndValidity();
     });
   }
 
@@ -70,6 +85,14 @@ export class RegisterComponent implements OnInit {
 
   get repeatPasswordField(): AbstractControl {
     return this.form.get('repeatPassword');
+  }
+
+  get typeField(): AbstractControl {
+    return this.form.get('type');
+  }
+
+  get companyNameField(): AbstractControl {
+    return this.form.get('companyName');
   }
 
 }

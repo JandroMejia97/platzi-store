@@ -23,6 +23,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -53,6 +54,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatPaginatorModule,
     MatProgressBarModule,
+    MatButtonToggleModule,
     MatProgressSpinnerModule
   ],
   exports: [
@@ -80,6 +82,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatPaginatorModule,
     MatProgressBarModule,
+    MatButtonToggleModule,
     MatProgressSpinnerModule
   ]
 })
