@@ -9,7 +9,10 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = this.addToken(req);
+    const {url} = req;
+    if (!url.includes('giphy')) {
+      req = this.addToken(req);
+    }
     return next.handle(req);
   }
 

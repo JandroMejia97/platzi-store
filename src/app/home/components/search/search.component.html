@@ -1,0 +1,57 @@
+<div class="search">
+  <mat-form-field>
+    <mat-label>
+      Keywords to search.
+    </mat-label>
+    <input placeholder="Search..." matInput type="search" [formControl]="searchControl">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <ng-container *ngIf="(!searchControl.value || notResults) && !searching; else results">
+    <h3>¡Opps! Without results.</h3>
+    <p *ngIf="!notResults; else notItems">
+      Enter keywords to search.
+    </p>
+    <ng-template #notItems>
+      <p>
+        No results for: <b>{{ searchControl.value }}</b>
+      </p>
+      <img class="not-content" src="assets/svg/undraw_empty_xct9.svg">
+    </ng-template>
+  </ng-container>
+  <ng-template #results>
+    <h2>Results found.</h2>
+  </ng-template>
+</div>
+<div class="content">
+  <div *ngIf="searching" fxLayoutAlign="center">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div
+    fxLayout="row wrap"
+    fxFlexAlign="start start"
+    fxLayoutGap="16px grid"
+    *ngIf="!notResults && !searching">
+    <div
+      fxFlex="25%"
+      fxFlex.sm="33%"
+      fxFlex.xs="100%"
+      *ngFor="let image of data">
+      <mat-card
+        class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{ image.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="image.url" [alt]="image.title">
+        <mat-card-content>
+          <p>
+            {{ image.title }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions aling="end">
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
