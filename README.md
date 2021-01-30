@@ -68,6 +68,10 @@ Before continuing, make sure you do the following:
      },
      analytics: {
        id: '<YOUR GA ID>'
+     },
+     giphy: {
+       apiUrl: 'https://api.giphy.com/v1/gifs/',
+       apiKey: '<YOUR API KEY>'
      }
    };
    ```
