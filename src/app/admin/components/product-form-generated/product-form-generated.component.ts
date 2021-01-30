@@ -1,25 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form-generated',
   templateUrl: './product-form-generated.component.html',
   styleUrls: ['./product-form-generated.component.scss']
 })
-export class ProductFormGeneratedComponent {
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
-  });
+export class ProductFormGeneratedComponent implements OnInit {
+  addressForm: FormGroup;
 
   hasUnitNumber = false;
 
@@ -86,6 +74,24 @@ export class ProductFormGeneratedComponent {
   ];
 
   constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.addressForm = this.fb.group({
+      company: null,
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
+      address: [null, Validators.required],
+      address2: null,
+      city: [null, Validators.required],
+      state: [null, Validators.required],
+      postalCode: [null, Validators.compose([
+        Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+      ],
+      shipping: ['free', Validators.required],
+      stock: [10, [Validators.required, Validators.min(0)]]
+    });
+    this.addressForm.get('stock').valueChanges.subscribe((value: number) => console.log(value));
+  }
 
   onSubmit() {
     alert('Thanks!');

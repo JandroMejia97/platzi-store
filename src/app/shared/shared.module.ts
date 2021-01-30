@@ -18,15 +18,18 @@ import { CardExpirationDateDirective } from './directives/card-expiration-date/c
 import { CardSecurityCodeDirective } from './directives/card-security-code/card-security-code.directive';
 import { QuicklinkModule } from 'ngx-quicklink';
 import { FibonacciPipe } from './pipes/fibonacci/fibonacci.pipe';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 
 @NgModule({
   declarations: [
+    FibonacciPipe,
     ExponentialPipe,
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
     SidenavComponent,
+    StepperComponent,
     CountProductsPipe,
     HighlightDirective,
     CardNumberDirective,
@@ -35,7 +38,6 @@ import { FibonacciPipe } from './pipes/fibonacci/fibonacci.pipe';
     CardSecurityCodeDirective,
     CardExpirationDateDirective,
     CreditCardExpirationDateInput,
-    FibonacciPipe,
   ],
   imports: [
     RouterModule,
@@ -50,6 +52,7 @@ import { FibonacciPipe } from './pipes/fibonacci/fibonacci.pipe';
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
+    StepperComponent,
     CountProductsPipe,
     HighlightDirective,
     CardNumberDirective,

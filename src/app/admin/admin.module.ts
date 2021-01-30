@@ -18,6 +18,7 @@ import { ProductsListContainer } from './containers/products-list/products-list.
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { CategoriesListContainer } from './containers/categories-list/categories-list.container';
 import { ProductFormGeneratedComponent } from './components//product-form-generated/product-form-generated.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProductFormGeneratedComponent } from './components//product-form-genera
   imports: [
     CommonModule,
     LayoutModule,
+    SharedModule,
     MaterialModule,
     QuicklinkModule,
     AdminRoutingModule,
