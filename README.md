@@ -52,15 +52,22 @@ Before continuing, make sure you do the following:
    ```ts
    export const environment = {
      production: false,
-     apiUrl: "https://platzi-store.herokuapp.com", // OR YOUR OWN API REST
+     apiUrl: 'https://platzi-store.herokuapp.com', // OR YOUR OWN API REST
      firebaseConfig: {
-       apiKey: "<YOUR API KEY>",
-       authDomain: "<YOUR AUTH DOMAIN>",
-       databaseURL: "<YOUR DATABASE URL>",
-       projectId: "<YOUR PROJECT ID>",
-       storageBucket: "<YOUR STORAGE BUCKET>",
-       messagingSenderId: "<YOUR MESSAGING SENDER ID>",
-       appId: "<YOUR API ID>"
+       apiKey: '<YOUR API KEY>',
+       authDomain: '<YOUR AUTH DOMAIN>',
+       databaseURL: '<YOUR DATABASE URL>',
+       projectId: '<YOUR PROJECT ID>',
+       storageBucket: '<YOUR STORAGE BUCKET>',
+       messagingSenderId: '<YOUR MESSAGING SENDER ID>',
+       appId: '<YOUR API ID>',
+       measurementId: '<YOUR MEASUREMENT ID>'
+     },
+     sentry: {
+       dns: '<YOUR SENTRY DNS>'
+     },
+     analytics: {
+       id: '<YOUR GA ID>'
      }
    };
    ```
@@ -99,5 +106,4 @@ With this ready you can see the project running on port **4200**, just open a br
   http://192.168.99.100
   PWA
   ng add @angular/pwa
-
 -->
