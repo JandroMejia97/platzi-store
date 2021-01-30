@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Province } from '@core/models/province.model';
 import { ProvinceService } from '@core/services/province.service';
 
@@ -27,15 +27,32 @@ export class PersonalDataFormComponent implements OnInit {
     this.dataForm = this.formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
+      addresses: this.formBuilder.array([]),
+      shipping: ['free', Validators.required]
+    });
+
+  }
+
+  addAddressField() {
+    console.log(this.addressesGroup);
+    this.addressesGroup.push(this.createAddressField());
+  }
+
+  private createAddressField(): FormGroup {
+    console.log('CREATED');
+    return this.formBuilder.group({
       address: [null, Validators.required],
       address2: null,
       city: [null, Validators.required],
       province: [null, Validators.required],
       postalCode: [null, Validators.compose([
         Validators.required, Validators.minLength(4), Validators.maxLength(5)])
-      ],
-      shipping: ['free', Validators.required]
+      ]
     });
+  }
+
+  get addressesGroup(): FormArray {
+    return this.dataForm.get('addresses') as FormArray;
   }
 
 
